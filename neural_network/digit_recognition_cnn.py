@@ -4,8 +4,6 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from keras.datasets import mnist
 from keras.utils import to_categorical
-from usps_dataset import X_train, y_train, X_val, y_val
-from usps_dataset import X, y
 
 # Load the data
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
@@ -50,3 +48,6 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 
 # Provide training data
 model.fit(X_train, y_train, batch_size=128, epochs=10, validation_split=0.2)
+
+# Save The Model If Above 90% Accuracy
+model.save('neural_network/digit_recognition_cnn.h5')
