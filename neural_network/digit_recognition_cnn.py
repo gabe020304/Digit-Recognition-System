@@ -1,9 +1,13 @@
-# Import necessary libraries
+import os
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from keras.datasets import mnist
 from keras.utils import to_categorical
+from keras.utils import load_img, img_to_array
+from keras.models import load_model
+from utils import check_model_exists, plot_history
+
 
 # Load the data
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
@@ -47,7 +51,24 @@ model.add(Dense(10, activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Provide training data
-model.fit(X_train, y_train, batch_size=128, epochs=10, validation_split=0.2)
+history = model.fit(X_train, y_train, batch_size=128, epochs=10, validation_split=0.2)
 
-# Save The Model If Above 90% Accuracy
-model.save('neural_network/digit_recognition_cnn.h5')
+print(os.getcwd())  # Check current working directory
+model = load_model('digit_recognition_cnn.h5')
+
+model = check_model_exists(model, history)
+
+# Load and preprocess the test image
+img = load_img('test_image.png', color_mode='grayscale', target_size=(28, 28))
+img_arr = img_to_array(img)
+img_arr = img_arr / 255.0
+img_arr = img_arr.reshape(1, 28, 28, 1)
+
+# Use the model to predict the digit
+prediction = model.predict(img_arr)
+digit = np.argmax(prediction)
+
+print('Predicted digit:', digit)
+
+# Call the plot_history function after training is done
+plot_history(history)
