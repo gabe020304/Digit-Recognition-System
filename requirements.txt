@@ -328,3 +328,4 @@ zstandard @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_
 numpy~=1.23.5
 scikit-learn~=1.2.1
 tensorflow~=2.10.0
+keras~=2.10.0

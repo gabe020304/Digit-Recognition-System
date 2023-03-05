@@ -1,7 +1,7 @@
 from sklearn.datasets import fetch_openml
 import numpy as np
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.utils import to_categorical
+from keras.utils import to_categorical
 
 # Load the USPS dataset
 usps = fetch_openml('usps', version=2, parser='auto')
