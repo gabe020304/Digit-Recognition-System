@@ -31,6 +31,16 @@ If you'd like to contribute to the Digit Recognition System project, here are so
 
 To contribute to the project, simply fork the repository, make your changes, and submit a pull request.
 
+## Requirements
+
+- requirements.txt 
+- Anaconda/Condas
+- Tensorflow 
+- SciKit
+- Keras
+- Pillow
+- USPS Dataset
+
 ## License
 
 This project is licensed under the MIT License - see the `LICENSE` file for details.
