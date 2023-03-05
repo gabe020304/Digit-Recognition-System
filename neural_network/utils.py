@@ -16,8 +16,8 @@ def check_model_exists(model, history):
 
 def plot_history(history):
     # Plot the training accuracy and validation accuracy
-    plt.plot(history.history['sparse_categorical_accuracy'])
-    plt.plot(history.history['val_sparse_categorical_accuracy'])
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
     plt.title('Model Accuracy')
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
